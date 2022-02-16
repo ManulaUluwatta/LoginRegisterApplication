@@ -1,24 +1,83 @@
+const jwt = require("jsonwebtoken");
+const bcrypt = require("bcryptjs");
 const asyncHandler = require("express-async-handler");
 const User = require("../models/userModel");
 
-//get user
-const getUser = asyncHandler(async (req, res) => {
-  const user = await User.find();
-  res.status(200).json(user);
-});
+//register user
+const registerUser = asyncHandler(async (req, res) => {
+  const { fullName, email, userName, password } = req.body;
 
-//add user
-const addUser = asyncHandler(async (req, res) => {
-  console.log(req.body);
-  if (!req.body.userName) {
+  if (!fullName || !email || !userName || !password) {
     res.status(400);
-    throw new Error("Please fill a text field");
+    throw new Error("Please fill all text field");
   }
 
+  //check if user exists
+  const userExists = await User.findOne({ email });
+
+  if (userExists) {
+    res.status(400);
+    throw new Error("User already exists");
+  }
+
+  // Hash password
+  const salt = await bcrypt.genSalt(10);
+  const hashPassword = await bcrypt.hash(password, salt);
+
+  //create user
   const user = await User.create({
-    userName: req.body.userName,
+    fullName,
+    email,
+    userName,
+    password: hashPassword,
   });
-  res.status(200).json(user);
+
+  if (user) {
+    res.status(201).json({
+      _id: user.id,
+      fullName: user.fullName,
+      userName: user.userName,
+      email: user.email,
+      token: generateToken(user._id)
+    });
+  } else {
+    res.status(400);
+    throw new Error("Invalid user data");
+  }
+}); 
+
+//Authenticate user
+const loginUser = asyncHandler(async (req, res) => {
+  const { email, password } = req.body;
+
+  // check for user email
+  const user = await User.findOne({ email });
+
+  //check password
+  if (user && (await bcrypt.compare(password, user.password))) {
+    res.status(201).json({
+      id: user.id,
+      fullName: user.fullName,
+      userName: user.userName,
+      email: user.email,
+      token: generateToken(user._id)
+    });
+  } else {
+    res.status(400);
+    throw new Error("Invalid credentials");
+  }
+});
+
+//get user
+const getUser = asyncHandler(async (req, res) => {
+    const {_id, fullName, userName, email} = await User.findById(req.user.id)
+
+    res.status(200).json({
+        id: _id,
+        fullName: fullName,
+        userName: userName,
+        email: email
+    }) 
 });
 
 //update user
@@ -36,21 +95,16 @@ const updateUser = asyncHandler(async (req, res) => {
   res.status(200).json(updatedUser);
 });
 
-//delete user
-const deleteUser = asyncHandler(async (req, res) => {
-  const user = await User.findById(req.params.id);
-  if (!user) {
-    res.status(400);
-    throw new Error("User not found");
-  }
-
-  await user.remove()
-  res.status(200).json({ id: req.params.id });
-});
+// Genarate JWT
+const generateToken = (id) => {
+    return jwt.sign({id}, process.env.JWT_SECRET, {
+        expiresIn: '10d',
+    })
+}
 
 module.exports = {
+  registerUser,
+  loginUser,
   getUser,
-  addUser,
   updateUser,
-  deleteUser,
 };
