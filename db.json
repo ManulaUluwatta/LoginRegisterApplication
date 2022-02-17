@@ -1,0 +1,213 @@
+{
+  "fields": [
+    {
+      "name": "_id",
+      "path": "_id",
+      "count": 3,
+      "types": [
+        {
+          "name": "ObjectID",
+          "bsonType": "ObjectID",
+          "path": "_id",
+          "count": 3,
+          "values": [
+            "620d5dede58f5af100fcf32d",
+            "620ccc8a90f72ca10c55be96",
+            "620d74d10e9c455f8bb6dba2"
+          ],
+          "total_count": 0,
+          "probability": 1,
+          "unique": 3,
+          "has_duplicates": false
+        }
+      ],
+      "total_count": 3,
+      "type": "ObjectID",
+      "has_duplicates": false,
+      "probability": 1
+    },
+    {
+      "name": "__v",
+      "path": "__v",
+      "count": 3,
+      "types": [
+        {
+          "name": "Int32",
+          "bsonType": "Int32",
+          "path": "__v",
+          "count": 3,
+          "values": [
+            0,
+            0,
+            0
+          ],
+          "total_count": 0,
+          "probability": 1,
+          "unique": 1,
+          "has_duplicates": true
+        }
+      ],
+      "total_count": 3,
+      "type": "Int32",
+      "has_duplicates": true,
+      "probability": 1
+    },
+    {
+      "name": "createdAt",
+      "path": "createdAt",
+      "count": 3,
+      "types": [
+        {
+          "name": "Date",
+          "bsonType": "Date",
+          "path": "createdAt",
+          "count": 3,
+          "values": [
+            "2022-02-16T20:26:21.410Z",
+            "2022-02-16T10:06:02.701Z",
+            "2022-02-16T22:04:01.124Z"
+          ],
+          "total_count": 0,
+          "probability": 1,
+          "unique": 3,
+          "has_duplicates": false
+        }
+      ],
+      "total_count": 3,
+      "type": "Date",
+      "has_duplicates": false,
+      "probability": 1
+    },
+    {
+      "name": "email",
+      "path": "email",
+      "count": 3,
+      "types": [
+        {
+          "name": "String",
+          "bsonType": "String",
+          "path": "email",
+          "count": 3,
+          "values": [
+            "dasun@gmail.com",
+            "shashila@gmail.com",
+            "donz@gmail.com"
+          ],
+          "total_count": 0,
+          "probability": 1,
+          "unique": 3,
+          "has_duplicates": false
+        }
+      ],
+      "total_count": 3,
+      "type": "String",
+      "has_duplicates": false,
+      "probability": 1
+    },
+    {
+      "name": "fullName",
+      "path": "fullName",
+      "count": 3,
+      "types": [
+        {
+          "name": "String",
+          "bsonType": "String",
+          "path": "fullName",
+          "count": 3,
+          "values": [
+            "dasun",
+            "Shashila",
+            "donz"
+          ],
+          "total_count": 0,
+          "probability": 1,
+          "unique": 3,
+          "has_duplicates": false
+        }
+      ],
+      "total_count": 3,
+      "type": "String",
+      "has_duplicates": false,
+      "probability": 1
+    },
+    {
+      "name": "password",
+      "path": "password",
+      "count": 3,
+      "types": [
+        {
+          "name": "String",
+          "bsonType": "String",
+          "path": "password",
+          "count": 3,
+          "values": [
+            "$2a$10$RGB/AtbI1MNk26ZUAZtB6.NMnL.uaTNgbRUKUkJBQz2eiWsE7OcjO",
+            "$2a$10$51da/sKkPH8tPLSgUSsoUeE/W6.YhbAa7UnmChk1K20p6OMGBUw.e",
+            "$2a$10$4HLUw5PWQZSmHmoJn8uw9uuGX7T/9LUDdETidurw9Y3vZMh2zzUHO"
+          ],
+          "total_count": 0,
+          "probability": 1,
+          "unique": 3,
+          "has_duplicates": false
+        }
+      ],
+      "total_count": 3,
+      "type": "String",
+      "has_duplicates": false,
+      "probability": 1
+    },
+    {
+      "name": "updatedAt",
+      "path": "updatedAt",
+      "count": 3,
+      "types": [
+        {
+          "name": "Date",
+          "bsonType": "Date",
+          "path": "updatedAt",
+          "count": 3,
+          "values": [
+            "2022-02-16T20:26:21.410Z",
+            "2022-02-16T10:06:02.701Z",
+            "2022-02-16T22:04:01.124Z"
+          ],
+          "total_count": 0,
+          "probability": 1,
+          "unique": 3,
+          "has_duplicates": false
+        }
+      ],
+      "total_count": 3,
+      "type": "Date",
+      "has_duplicates": false,
+      "probability": 1
+    },
+    {
+      "name": "userName",
+      "path": "userName",
+      "count": 3,
+      "types": [
+        {
+          "name": "String",
+          "bsonType": "String",
+          "path": "userName",
+          "count": 3,
+          "values": [
+            "dasun",
+            "shashila",
+            "Donz"
+          ],
+          "total_count": 0,
+          "probability": 1,
+          "unique": 3,
+          "has_duplicates": false
+        }
+      ],
+      "total_count": 3,
+      "type": "String",
+      "has_duplicates": false,
+      "probability": 1
+    }
+  ],
+  "count": 3
+}
