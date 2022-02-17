@@ -2,9 +2,9 @@
 Surge assignment (Login Registration)
 
 to run backend
-  npm run server
+  ###`npm run server`
  
 to run frontend
-  npm run start
+  ###`npm run start`
 
 
