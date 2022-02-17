@@ -27,7 +27,7 @@ function Register() {
     }
 
     if (isSuccess || user) {
-      navigate("/");
+      navigate("/login");
     }
 
     dispatch(reset());
@@ -45,6 +45,16 @@ function Register() {
 
     if (password !== confirmPassword) {
       toast.error("Passwords do not match");
+    } else if (
+      !fullName ||
+      !userName ||
+      !email ||
+      !password ||
+      !confirmPassword
+    ) {
+      toast.error(
+        "Before pressing the register button, please fill all text fields"
+      );
     } else {
       const userData = {
         fullName,

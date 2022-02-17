@@ -10,7 +10,7 @@ function Header() {
   const onLogout = () => {
     dispatch(logout());
     dispatch(reset());
-    navigate('/');
+    navigate("/login");
   };
   return (
     <header className="fixed w-full flex flex-wrap items-center justify-between bg-slate-300 h-10 px-3">
@@ -22,9 +22,7 @@ function Header() {
           {user ? (
             <>
               <li className="hover:scale-105 duration-200">
-                <button  onClick={onLogout}>
-                  Logout
-                </button>
+                <button onClick={onLogout}>Logout</button>
               </li>
             </>
           ) : (

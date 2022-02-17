@@ -11,7 +11,7 @@ function Login() {
     password: "",
   });
 
-  const { email, password,} = formData;
+  const { email, password } = formData;
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
@@ -40,28 +40,34 @@ function Login() {
 
   const onSubmit = (e) => {
     e.preventDefault();
-    const userData = {
-        email,
-        password
-    }
-    dispatch(login(userData))
 
+    if (!email) {
+      toast.error("Please add email");
+    } else if (!password) {
+      toast.error("Please add password");
+    } else {
+      const userData = {
+        email,
+        password,
+      };
+      dispatch(login(userData));
+    }
   };
 
-  if(isLoading){
-    return <Spinner />
+  if (isLoading) {
+    return <Spinner />;
   }
   return (
     <>
       <div className="md:mt-0 md:col-span-2 w-full lg:w-1/3 mx-auto  py-20">
         <section className="py-14 text-center text-xl">
           <h1>Login</h1>
-          <p>Login and start</p>
+          <p>Login to system</p>
         </section>
         <form onSubmit={onSubmit}>
-          <div className="shadow-xl rounded-lg sm:overflow-hidden bg-gray-100 dark:bg-opacity-5">
+          <div className="shadow-xl rounded-lg sm:overflow-hidden bg-gray-100">
             <div className="px-2 sm:p-4">
-              <div className="grid grid-cols-6 gap-5 p-2 md:px-5">
+              <div className="grid grid-cols-6 gap-5 p-5">
                 <div className="col-span-6">
                   <input
                     type="email"
