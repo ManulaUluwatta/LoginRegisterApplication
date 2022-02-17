@@ -1,9 +1,11 @@
-
+import { useSelector} from "react-redux";
 
 function Dashboard() {
-  return (
-    <div className="py-14">Dashboard</div>
-  )
+  const { user} = useSelector(
+    (state) => state.auth
+  );
+
+  return <div className="py-14">Dashbord</div>;
 }
 
-export default Dashboard
+export default Dashboard;

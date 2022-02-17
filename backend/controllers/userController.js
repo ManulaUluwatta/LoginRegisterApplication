@@ -38,13 +38,13 @@ const registerUser = asyncHandler(async (req, res) => {
       fullName: user.fullName,
       userName: user.userName,
       email: user.email,
-      token: generateToken(user._id)
+      token: generateToken(user._id),
     });
   } else {
     res.status(400);
     throw new Error("Invalid user data");
   }
-}); 
+});
 
 //Authenticate user
 const loginUser = asyncHandler(async (req, res) => {
@@ -60,7 +60,7 @@ const loginUser = asyncHandler(async (req, res) => {
       fullName: user.fullName,
       userName: user.userName,
       email: user.email,
-      token: generateToken(user._id)
+      token: generateToken(user._id),
     });
   } else {
     res.status(400);
@@ -70,14 +70,14 @@ const loginUser = asyncHandler(async (req, res) => {
 
 //get user
 const getUser = asyncHandler(async (req, res) => {
-    const {_id, fullName, userName, email} = await User.findById(req.user.id)
+  const { _id, fullName, userName, email } = await User.findById(req.user.id);
 
-    res.status(200).json({
-        id: _id,
-        fullName: fullName,
-        userName: userName,
-        email: email
-    }) 
+  res.status(200).json({
+    id: _id,
+    fullName: fullName,
+    userName: userName,
+    email: email,
+  });
 });
 
 //update user
@@ -88,6 +88,9 @@ const updateUser = asyncHandler(async (req, res) => {
     res.status(400);
     throw new Error("User Not found");
   }
+//   const password = req.body.password;
+//   const salt = await bcrypt.genSalt(10);
+//   const hashPassword = await bcrypt.hash(password, salt);
 
   const updatedUser = await User.findByIdAndUpdate(req.params.id, req.body, {
     new: true,
@@ -97,10 +100,10 @@ const updateUser = asyncHandler(async (req, res) => {
 
 // Genarate JWT
 const generateToken = (id) => {
-    return jwt.sign({id}, process.env.JWT_SECRET, {
-        expiresIn: '10d',
-    })
-}
+  return jwt.sign({ id }, process.env.JWT_SECRET, {
+    expiresIn: "10d",
+  });
+};
 
 module.exports = {
   registerUser,
